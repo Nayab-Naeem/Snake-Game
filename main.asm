@@ -164,3 +164,50 @@ PrintChar:
 DoneSnake:
     RET
 DrawSnake ENDP
+
+;--------------------------------------------
+;Function for drawing Food
+DrawFood PROC
+    ; Move cursor to food position
+    MOV AH,02h
+    MOV BH,0           ; Page number
+    MOV DH, FoodY      ; Row
+    MOV DL, FoodX      ; Column
+    INT 10h
+
+    ; Print food character
+    MOV AH,09h
+    MOV AL,'*'         ; Food symbol
+    MOV BL,0Eh         ; Color = yellow
+    MOV CX,1           ; Print once
+    INT 10h
+
+    RET
+DrawFood ENDP
+
+;--------------------------------------------
+;Function for displaying Score
+ShowScore PROC
+    ; Move cursor to position
+    MOV AH,02h
+    MOV BH,0
+    MOV DH,0          ; Row
+    MOV DL,60         ; Column
+    INT 10h
+
+    ; Print "Score: "
+    MOV AH,09h
+    MOV DX, OFFSET ScoreText              ;we have define ScoreText in data segment
+    INT 21h
+
+    ; Print score digit
+    MOV AL, Score
+    ADD AL, '0'       ; Convert to ASCII
+
+    MOV AH,0Eh        ; Teletype output
+    MOV BH,0
+    MOV BL,0Fh       ;white text color
+    INT 10h
+
+    RET
+ShowScore ENDP
