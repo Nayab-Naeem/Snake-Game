@@ -211,3 +211,51 @@ ShowScore PROC
 
     RET
 ShowScore ENDP
+
+;--------------------------------------------
+;Function for displaying Game Over Part
+
+GameOverScreen PROC
+
+    ; Clear screen first
+    CALL ClearScreen
+
+    ; ---------------- GAME OVER TEXT ----------------
+    MOV AH,02h
+    MOV BH,0
+    MOV DH,10         ; Row 
+    MOV DL,30         ; Column
+    INT 10h
+
+    MOV AH,09h
+    MOV DX, OFFSET GameOverText             ;we have define GameOverText in data segment
+    INT 21h
+
+    ; ---------------- FINAL SCORE TEXT ----------------
+    MOV AH,02h
+    MOV BH,0
+    MOV DH,12         ; Row
+    MOV DL,28         ; Column
+    INT 10h
+
+    MOV AH,09h
+    MOV DX, OFFSET FinalScoreText
+    INT 21h
+
+    ; Print score digit
+    MOV AL, Score
+    ADD AL, '0'       ; Convert number to ASCII
+
+    MOV AH,0Eh        ; BIOS teletype
+    MOV BH,0
+    MOV BL,0Ch        ; Red color
+    INT 10h
+
+    ; ---------------- WAIT FOR KEY ----------------
+    MOV AH,00h
+    INT 16h          
+
+    RET
+GameOverScreen ENDP
+
+;--------------------------------------------
