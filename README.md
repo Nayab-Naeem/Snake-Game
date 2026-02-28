@@ -14,7 +14,7 @@ This is a console-based Snake Game where the player controls the snake to eat fo
 - Score tracking  
 - Easy to run on DOSBox and VSCode
 
-# Project Information:
+## Project Information:
 
 - Classic Snake game implemented in 8086 Assembly.
 - Platform: DOS / DOSBox , VS Code
@@ -23,23 +23,19 @@ This is a console-based Snake Game where the player controls the snake to eat fo
 - Game Objective: Eat food (@) to grow and increase score.
 - Game Over: Snake hits wall.
 
-------------------------------------------------------------
-# REQUIRED ENVIRONMENT
-------------------------------------------------------------
+## REQUIRED ENVIRONMENT
+
 1. Operating System: Windows / DOSBox
 2. Assembler: TASM (Turbo Assembler) or MASM (Microsoft Assembler)
 3. Emulator: DOSBox (for running 8086 programs on modern systems)
 4. Screen: 80x25 text mode
 
-------------------------------------------------------------
-# FILES REQUIRED
-------------------------------------------------------------
+## FILES REQUIRED
+
 - snake.asm       → Main assembly code
 - (Optional) snake.obj / snake.exe if precompiled
 
-------------------------------------------------------------
 # STEP-BY-STEP GUIDE TO RUN THE GAME
-------------------------------------------------------------
 
 Step 1: Open DOSBox and mount your project folder
 -------------------------------------------------
@@ -67,14 +63,13 @@ C:\> snake.exe
 - Eat food (@) to grow and increase your score
 - Game ends on collision with wall
 
-------------------------------------------------------------
-# NOTES & TIPS
-------------------------------------------------------------
+## NOTES & TIPS
+
 - Make sure DOSBox is set to **80x25 text mode**
 - The snake tail grows only when food is eaten
 - Game speed is controlled by the built-in delay routine
 - Press any key to exit after “Game Over” screen
 
-------------------------------------------------------------
+
 # ENJOY THE GAME!
 ------------------------------------------------------------
