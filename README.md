@@ -1,75 +1,101 @@
+# 🐍 Snake Game in x86 Assembly (8086)
 
-# Snake Game in Assembly Language
+A fully functional Snake Game built entirely in **8086 Assembly Language**, using BIOS and DOS interrupts for display, input handling, and game logic — no high-level libraries, no frameworks, just raw low-level code.
 
-A classic Snake Game implemented in **Assembly Language** 
+![Snake Game Demo](game.gif)
 
-## 🕹️ Game Description
+---
 
-This is a console-based Snake Game where the player controls the snake to eat food and grow longer. The game ends if the snake collides with the wall or itself.  
+## 🔧 Technical Highlights
 
-## 🎮 Features
+- **Language:** x86 Assembly (8086)
+- **Assembler:** TASM / MASM
+- **Platform:** DOS / DOSBox
+- **Display:** BIOS INT 10h — text mode 80×25, color-coded characters
+- **Input:** BIOS INT 16h — non-blocking keyboard polling
+- **Randomization:** System clock via INT 1Ah for food placement
+- **Memory:** Manual array management for snake body coordinates (no dynamic allocation)
+- **Game Loop:** Delay-controlled loop with real-time input, movement, collision, and rendering
 
-- Classic snake gameplay  
-- Console-based graphics  
-- Score tracking  
-- Easy to run on DOSBox and VSCode
+---
 
-## Project Information:
+## 🎮 Gameplay
 
-- Classic Snake game implemented in 8086 Assembly.
-- Platform: DOS / DOSBox , VS Code
-- Assembler: TASM or MASM
-- Controls: Arrow Keys or W / A / S / D
-- Game Objective: Eat food (@) to grow and increase score.
-- Game Over: Snake hits wall.
+- Control the snake using **Arrow Keys** or **W / A / S / D**
+- Eat food `@` (red) to grow the snake and increase your score
+- Game ends when the snake hits a wall
+- Score is displayed on the Game Over screen
 
-## REQUIRED ENVIRONMENT
+---
 
-1. Operating System: Windows / DOSBox
-2. Assembler: TASM (Turbo Assembler) or MASM (Microsoft Assembler)
-3. Emulator: DOSBox (for running 8086 programs on modern systems)
-4. Screen: 80x25 text mode
+## 📁 Project Structure
 
-## FILES REQUIRED
+```
+Snake-Game/
+├── SnakeGame.ASM       # Main source file (8086 Assembly)
+├── game.gif  # Gameplay demo
+├── README.md
+└── .gitignore
+```
 
-- snake.asm       → Main assembly code
-- (Optional) snake.obj / snake.exe if precompiled
+---
 
-# STEP-BY-STEP GUIDE TO RUN THE GAME
+## ⚙️ How to Run
 
-Step 1: Open DOSBox and mount your project folder
--------------------------------------------------
-C:\> mount c c:\path\to\your\project
-C:\> c:
+### Requirements
+- [DOSBox](https://www.dosbox.com/) — DOS emulator for modern systems
+- TASM (Turbo Assembler) **or** MASM (Microsoft Assembler)
 
-Step 2: Assemble the code
---------------------------
-- Using TASM:
-    tasm snake.asm
-- Using MASM:
-    masm snake.asm;
+### Steps
 
-Step 3: Link the object file
-----------------------------
-- Using LINK:
-    link snake.obj
-- This generates the executable file: snake.exe
+**1. Mount your project folder in DOSBox:**
+```
+mount c c:\path\to\Snake-Game
+c:
+```
 
-Step 4: Run the game
----------------------
-C:\> snake.exe
-- Start screen appears → Press any key to begin
-- Use **Arrow Keys** or **W / A / S / D** to control the snake
-- Eat food (@) to grow and increase your score
-- Game ends on collision with wall
+**2. Assemble the source file:**
+```
+tasm snake.asm       ← using TASM
+masm snake.asm;      ← using MASM
+```
 
-## NOTES & TIPS
+**3. Link the object file:**
+```
+link snake.obj
+```
 
-- Make sure DOSBox is set to **80x25 text mode**
-- The snake tail grows only when food is eaten
-- Game speed is controlled by the built-in delay routine
-- Press any key to exit after “Game Over” screen
+**4. Run the game:**
+```
+snake.exe
+```
 
+> Make sure DOSBox is set to **80×25 text mode** for correct rendering.
 
-# ENJOY THE GAME!
-------------------------------------------------------------
+---
+
+## 💡 What This Project Demonstrates
+
+| Concept | Implementation |
+|---|---|
+| Low-level I/O | BIOS/DOS interrupt calls (INT 10h, 16h, 1Ah, 21h) |
+| Memory management | Manual byte arrays for snake X/Y coordinates |
+| Game loop design | Polling-based input + delay routine for speed control |
+| Collision detection | Boundary and food checks via register comparisons |
+| Randomization | Clock tick entropy (CX:DX from INT 1Ah) with modulo |
+| Screen rendering | Cursor positioning + character/attribute writes via INT 10h |
+
+---
+
+## 🛠️ Built With
+
+![Assembly](https://img.shields.io/badge/Assembly-x86%208086-blue?style=flat-square)
+![Platform](https://img.shields.io/badge/Platform-DOSBox%20%2F%20DOS-lightgrey?style=flat-square)
+![Assembler](https://img.shields.io/badge/Assembler-TASM%20%2F%20MASM-green?style=flat-square)
+
+---
+
+## 👩‍💻 Author
+
+**Nayab Naeem**  
+[GitHub](https://github.com/Nayab-Naeem) • [Portfolio](https://nayabnaeem.netlify.app)
